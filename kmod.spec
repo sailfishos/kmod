@@ -7,7 +7,7 @@
 
 Name:       kmod
 Summary:    Linux kernel module handling
-Version:    4
+Version:    5
 Release:    1
 Group:      Kernel/Linux Kernel
 License:    LGPLv2

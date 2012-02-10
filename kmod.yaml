@@ -3,7 +3,7 @@ Summary: Linux kernel module handling
 Description: |
   kmod is a set of tools to handle common tasks with Linux kernel modules like
   insert, remove, list, check properties, resolve dependencies and aliases.
-Version: 4
+Version: 5
 Release: 1
 Group: Kernel/Linux Kernel
 License: LGPLv2
