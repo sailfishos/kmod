@@ -3,20 +3,34 @@ Summary: Linux kernel module handling
 Description: |
   kmod is a set of tools to handle common tasks with Linux kernel modules like
   insert, remove, list, check properties, resolve dependencies and aliases.
-Version: 5
+Version: 9
 Release: 1
 Group: Kernel/Linux Kernel
 License: LGPLv2
 URL: http://git.profusion.mobi/cgit.cgi/kmod.git/
 Sources:
-    - http://packages.profusion.mobi/kmod/%{name}-%{version}.tar.xz
+    - http://www.kernel.org/pub/linux/utils/kernel/kmod/%{name}-%{version}.tar.xz
 Files:
     - "%{_bindir}/kmod"
     - "%{_mandir}/*"
+    - "%{_sbindir}/modprobe"
+    - "%{_sbindir}/modinfo"
+    - "%{_sbindir}/insmod"
+    - "%{_sbindir}/rmmod"
+    - "%{_sbindir}/lsmod"
+    - "%{_sbindir}/depmod"
+
+Obsoletes:
+    - module-init-tools <= 3.15
+Provides:
+    - module-init-tools > 3.15
+
 PkgConfigBR:
     - zlib
-PkgBR:
-    - lzo-devel
+    - liblzma
+ConfigOptions:
+    - --with-xz
+    - --with-zlib
 
 SubPackages:
     - Name: devel
@@ -31,7 +45,7 @@ SubPackages:
         - "%{_libdir}/pkgconfig/libkmod.pc"
 
     - Name: libs
-      Summary: kmod libraries
+      Summary: Libraries for kmod
       Description: Libraries for kmod.
       Group: Kernel/Linux Kernel
       Files:

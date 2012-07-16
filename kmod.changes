@@ -1,5 +1,14 @@
+* Mon Jul 16 2012 Marko Saukko <marko.saukko@jollamobile.com> - 9
+- Update to version 9.
+- Added links to module-init-tools binaries: modprobe, modinfo, 
+  insmod, rmmod, lsmod and depmod
+- Enabled zlib and xz compressions.
+- Added obsoletes/provides for module-init-tools, and thus:
+  Fixes MER#353: module-init-tools should be upgraded to 3.15
+
 * Thu Feb 09 2012 Marko Saukko <marko.saukko@gmail.com> - 5
 - Update to version 5.
 
 * Thu Jan 26 2012 Marko Saukko <marko.saukko@gmail.com> - 4
 - Initial packaging for Mer.
+
