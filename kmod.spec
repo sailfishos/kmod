@@ -26,15 +26,6 @@ kmod is a set of tools to handle common tasks with Linux kernel modules like
 insert, remove, list, check properties, resolve dependencies and aliases.
 
 
-%package devel
-Summary:    Devel files for libkmod
-Group:      Kernel/Linux Kernel
-Requires:   %{name} = %{version}-%{release}
-Requires:   %{name}-libs = %{version}-%{release}
-
-%description devel
-Development files for libkmod.
-
 %package libs
 Summary:    Libraries for kmod
 Group:      Kernel/Linux Kernel
@@ -43,6 +34,15 @@ Requires(postun): /sbin/ldconfig
 
 %description libs
 Libraries for kmod.
+
+%package devel
+Summary:    Devel files for libkmod
+Group:      Kernel/Linux Kernel
+Requires:   %{name} = %{version}-%{release}
+Requires:   %{name}-libs = %{version}-%{release}
+
+%description devel
+Development files for libkmod.
 
 
 %prep
@@ -91,27 +91,31 @@ mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/modprobe.d
 
 %files
 %defattr(-,root,root,-)
+%dir %{_sysconfdir}/depmod.d
+%dir %{_sysconfdir}/modprobe.d
+%dir %{_prefix}/lib/modprobe.d
 %{_bindir}/kmod
-%{_mandir}/*
 %{_sbindir}/modprobe
 %{_sbindir}/modinfo
 %{_sbindir}/insmod
 %{_sbindir}/rmmod
 %{_sbindir}/lsmod
 %{_sbindir}/depmod
+%attr(0644,root,root) %{_mandir}/man5/*.5*
+%attr(0644,root,root) %{_mandir}/man8/*.8*
 # >> files
 # << files
-
-%files devel
-%defattr(-,root,root,-)
-%{_includedir}/libkmod.h
-%{_libdir}/libkmod.so
-%{_libdir}/pkgconfig/libkmod.pc
-# >> files devel
-# << files devel
 
 %files libs
 %defattr(-,root,root,-)
 %{_libdir}/libkmod.so.*
 # >> files libs
 # << files libs
+
+%files devel
+%defattr(-,root,root,-)
+%{_includedir}/libkmod.h
+%{_libdir}/pkgconfig/libkmod.pc
+%{_libdir}/libkmod.so
+# >> files devel
+# << files devel

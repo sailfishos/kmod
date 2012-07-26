@@ -11,14 +11,18 @@ URL: http://git.profusion.mobi/cgit.cgi/kmod.git/
 Sources:
     - http://www.kernel.org/pub/linux/utils/kernel/kmod/%{name}-%{version}.tar.xz
 Files:
+    - "%dir %{_sysconfdir}/depmod.d"
+    - "%dir %{_sysconfdir}/modprobe.d"
+    - "%dir %{_prefix}/lib/modprobe.d"
     - "%{_bindir}/kmod"
-    - "%{_mandir}/*"
     - "%{_sbindir}/modprobe"
     - "%{_sbindir}/modinfo"
     - "%{_sbindir}/insmod"
     - "%{_sbindir}/rmmod"
     - "%{_sbindir}/lsmod"
     - "%{_sbindir}/depmod"
+    - "%attr(0644,root,root) %{_mandir}/man5/*.5*"
+    - "%attr(0644,root,root) %{_mandir}/man8/*.8*"
 
 Obsoletes:
     - module-init-tools <= 3.15
@@ -33,6 +37,14 @@ ConfigOptions:
     - --with-zlib
 
 SubPackages:
+    - Name: libs
+      Summary: Libraries for kmod
+      Description: Libraries for kmod.
+      Group: Kernel/Linux Kernel
+      Files:
+        - "%{_libdir}/libkmod.so.*"
+      AutoDepend: false
+    
     - Name: devel
       Summary: Devel files for libkmod
       Description: Development files for libkmod.
@@ -41,13 +53,6 @@ SubPackages:
         - "%{name}-libs = %{version}-%{release}"
       Files:
         - "%{_includedir}/libkmod.h"
-        - "%{_libdir}/libkmod.so"
         - "%{_libdir}/pkgconfig/libkmod.pc"
+        - "%{_libdir}/libkmod.so"
 
-    - Name: libs
-      Summary: Libraries for kmod
-      Description: Libraries for kmod.
-      Group: Kernel/Linux Kernel
-      Files:
-        - "%{_libdir}/libkmod.so.*"
-      AutoDepend: false
