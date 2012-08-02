@@ -6,7 +6,7 @@ Description: |
 Version: 9
 Release: 1
 Group: Kernel/Linux Kernel
-License: LGPLv2
+License: GPLv2
 URL: http://git.profusion.mobi/cgit.cgi/kmod.git/
 Sources:
     - http://www.kernel.org/pub/linux/utils/kernel/kmod/%{name}-%{version}.tar.xz
@@ -15,12 +15,12 @@ Files:
     - "%dir %{_sysconfdir}/modprobe.d"
     - "%dir %{_prefix}/lib/modprobe.d"
     - "%{_bindir}/kmod"
-    - "%{_sbindir}/modprobe"
-    - "%{_sbindir}/modinfo"
-    - "%{_sbindir}/insmod"
-    - "%{_sbindir}/rmmod"
-    - "%{_sbindir}/lsmod"
-    - "%{_sbindir}/depmod"
+    - "/sbin/modprobe"
+    - "/sbin/modinfo"
+    - "/sbin/insmod"
+    - "/sbin/rmmod"
+    - "/sbin/lsmod"
+    - "/sbin/depmod"
     - "%attr(0644,root,root) %{_mandir}/man5/*.5*"
     - "%attr(0644,root,root) %{_mandir}/man8/*.8*"
 

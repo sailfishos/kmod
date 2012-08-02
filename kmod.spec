@@ -12,7 +12,7 @@ Summary:    Linux kernel module handling
 Version:    9
 Release:    1
 Group:      Kernel/Linux Kernel
-License:    LGPLv2
+License:    GPLv2
 URL:        http://git.profusion.mobi/cgit.cgi/kmod.git/
 Source0:    http://www.kernel.org/pub/linux/utils/kernel/kmod/%{name}-%{version}.tar.xz
 Source100:  kmod.yaml
@@ -71,13 +71,13 @@ rm -rf %{buildroot}
 %make_install
 
 # >> install post
-mkdir -p $RPM_BUILD_ROOT%{_sbindir}/
-ln -sf ../bin/kmod $RPM_BUILD_ROOT%{_sbindir}/modprobe
-ln -sf ../bin/kmod $RPM_BUILD_ROOT%{_sbindir}/modinfo
-ln -sf ../bin/kmod $RPM_BUILD_ROOT%{_sbindir}/insmod
-ln -sf ../bin/kmod $RPM_BUILD_ROOT%{_sbindir}/rmmod
-ln -sf ../bin/kmod $RPM_BUILD_ROOT%{_sbindir}/depmod
-ln -sf ../bin/kmod $RPM_BUILD_ROOT%{_sbindir}/lsmod
+mkdir -p $RPM_BUILD_ROOT/sbin/
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/modprobe
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/modinfo
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/insmod
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/rmmod
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/depmod
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/lsmod
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/depmod.d
@@ -95,12 +95,12 @@ mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/modprobe.d
 %dir %{_sysconfdir}/modprobe.d
 %dir %{_prefix}/lib/modprobe.d
 %{_bindir}/kmod
-%{_sbindir}/modprobe
-%{_sbindir}/modinfo
-%{_sbindir}/insmod
-%{_sbindir}/rmmod
-%{_sbindir}/lsmod
-%{_sbindir}/depmod
+/sbin/modprobe
+/sbin/modinfo
+/sbin/insmod
+/sbin/rmmod
+/sbin/lsmod
+/sbin/depmod
 %attr(0644,root,root) %{_mandir}/man5/*.5*
 %attr(0644,root,root) %{_mandir}/man8/*.8*
 # >> files
