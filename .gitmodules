@@ -1,0 +1,3 @@
+[submodule "kmod"]
+	path = kmod
+	url = git://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
