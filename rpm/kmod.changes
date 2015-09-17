@@ -1,5 +1,8 @@
+* Thu Sep 17 2015 Igor Zhbanov <igor.zhbanov@jolla.com> - 21
+- Update to version 21
+
 * Fri Jul 26 2013 Marko Saukko <marko.saukko@jollamobile.com> - 14
-- Updat to version 14
+- Update to version 14
 
 * Thu Aug 02 2012 Marko Saukko <marko.saukko@jollamobile.com> - 9
 - Move binaries to /sbin for now and move them back when link from 
