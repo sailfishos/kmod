@@ -50,13 +50,13 @@ make %{?jobs:-j%jobs}
 rm -rf %{buildroot}
 %make_install
 
-mkdir -p $RPM_BUILD_ROOT/sbin/
-ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/modprobe
-ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/modinfo
-ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/insmod
-ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/rmmod
-ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/depmod
-ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT/sbin/lsmod
+mkdir -p $RPM_BUILD_ROOT%{_sbindir}
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT%{_sbindir}/modprobe
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT%{_sbindir}/modinfo
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT%{_sbindir}/insmod
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT%{_sbindir}/rmmod
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT%{_sbindir}/depmod
+ln -sf %{_bindir}/kmod $RPM_BUILD_ROOT%{_sbindir}/lsmod
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/depmod.d
@@ -72,15 +72,15 @@ mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/modprobe.d
 %dir %{_sysconfdir}/modprobe.d
 %dir %{_prefix}/lib/modprobe.d
 %{_bindir}/kmod
-/sbin/modprobe
-/sbin/modinfo
-/sbin/insmod
-/sbin/rmmod
-/sbin/lsmod
-/sbin/depmod
+%{_sbindir}/modprobe
+%{_sbindir}/modinfo
+%{_sbindir}/insmod
+%{_sbindir}/rmmod
+%{_sbindir}/lsmod
+%{_sbindir}/depmod
 %{_datadir}/bash-completion/completions/kmod
-#%attr(0644,root,root) %{_mandir}/man5/*.5*
-#%attr(0644,root,root) %{_mandir}/man8/*.8*
+#%attr(0644,root,root) %%{_mandir}/man5/*.5*
+#%attr(0644,root,root) %%{_mandir}/man8/*.8*
 
 %files libs
 %defattr(-,root,root,-)
@@ -91,4 +91,3 @@ mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/modprobe.d
 %{_includedir}/libkmod.h
 %{_libdir}/pkgconfig/libkmod.pc
 %{_libdir}/libkmod.so
-
