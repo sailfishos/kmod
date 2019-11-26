@@ -39,7 +39,7 @@ Development files for libkmod.
 %setup -q -n %{name}-%{version}/kmod/
 
 %build
-./bootstrap
+./autogen.sh
 %configure --disable-static \
     --with-xz \
     --with-zlib --disable-manpages
