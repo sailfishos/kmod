@@ -1,8 +1,7 @@
 Name:       kmod
 Summary:    Linux kernel module handling
-Version:    27
+Version:    29
 Release:    1
-Group:      Kernel/Linux Kernel
 License:    GPLv2
 URL:        http://git.profusion.mobi/cgit.cgi/kmod.git/
 Source0:    http://www.kernel.org/pub/linux/utils/kernel/kmod/%{name}-%{version}.tar.xz
@@ -19,16 +18,15 @@ insert, remove, list, check properties, resolve dependencies and aliases.
 
 %package libs
 Summary:    Libraries for kmod
-Group:      Kernel/Linux Kernel
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
+License: LGPLv2+
 
 %description libs
 Libraries for kmod.
 
 %package devel
 Summary:    Devel files for libkmod
-Group:      Kernel/Linux Kernel
 Requires:   %{name} = %{version}-%{release}
 Requires:   %{name}-libs = %{version}-%{release}
 
@@ -36,7 +34,7 @@ Requires:   %{name}-libs = %{version}-%{release}
 Development files for libkmod.
 
 %prep
-%setup -q -n %{name}-%{version}/kmod/
+%setup -q -n %{name}-%{version}/%{name}
 
 %build
 ./autogen.sh
@@ -44,7 +42,7 @@ Development files for libkmod.
     --with-xz \
     --with-zlib --disable-manpages
 
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 rm -rf %{buildroot}
@@ -68,6 +66,7 @@ mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/modprobe.d
 
 %files
 %defattr(-,root,root,-)
+%license tools/COPYING
 %dir %{_sysconfdir}/depmod.d
 %dir %{_sysconfdir}/modprobe.d
 %dir %{_prefix}/lib/modprobe.d
@@ -79,11 +78,10 @@ mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/modprobe.d
 /sbin/lsmod
 /sbin/depmod
 %{_datadir}/bash-completion/completions/kmod
-#%attr(0644,root,root) %{_mandir}/man5/*.5*
-#%attr(0644,root,root) %{_mandir}/man8/*.8*
 
 %files libs
 %defattr(-,root,root,-)
+%license COPYING
 %{_libdir}/libkmod.so.*
 
 %files devel
