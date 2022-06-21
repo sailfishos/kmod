@@ -3,8 +3,8 @@ Summary:    Linux kernel module handling
 Version:    29
 Release:    1
 License:    GPLv2
-URL:        http://git.profusion.mobi/cgit.cgi/kmod.git/
-Source0:    http://www.kernel.org/pub/linux/utils/kernel/kmod/%{name}-%{version}.tar.xz
+URL:        https://github.com/sailfishos/kmod
+Source0:    %{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  libxslt
